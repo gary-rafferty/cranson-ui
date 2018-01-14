@@ -9113,7 +9113,7 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _user$project$Cranson$viewPlanItem = function (plan) {
+var _gary_rafferty$cranson_ui$Cranson$viewPlanItem = function (plan) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -9257,8 +9257,8 @@ var _user$project$Cranson$viewPlanItem = function (plan) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Cranson$viewPlansList = function (plans) {
-	var listOfPlans = A2(_elm_lang$core$List$map, _user$project$Cranson$viewPlanItem, plans);
+var _gary_rafferty$cranson_ui$Cranson$viewPlansList = function (plans) {
+	var listOfPlans = A2(_elm_lang$core$List$map, _gary_rafferty$cranson_ui$Cranson$viewPlanItem, plans);
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -9316,7 +9316,7 @@ var _user$project$Cranson$viewPlansList = function (plans) {
 			}
 		});
 };
-var _user$project$Cranson$viewHeader = function (title) {
+var _gary_rafferty$cranson_ui$Cranson$viewHeader = function (title) {
 	return A2(
 		_elm_lang$html$Html$header,
 		{ctor: '[]'},
@@ -9337,7 +9337,7 @@ var _user$project$Cranson$viewHeader = function (title) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Cranson$view = function (model) {
+var _gary_rafferty$cranson_ui$Cranson$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -9347,15 +9347,15 @@ var _user$project$Cranson$view = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: _user$project$Cranson$viewHeader('Cranson'),
+			_0: _gary_rafferty$cranson_ui$Cranson$viewHeader('Cranson'),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Cranson$viewPlansList(model.plans),
+				_0: _gary_rafferty$cranson_ui$Cranson$viewPlansList(model.plans),
 				_1: {ctor: '[]'}
 			}
 		});
 };
-var _user$project$Cranson$httpErrorToMessage = function (error) {
+var _gary_rafferty$cranson_ui$Cranson$httpErrorToMessage = function (error) {
 	var _p0 = error;
 	switch (_p0.ctor) {
 		case 'NetworkError':
@@ -9368,7 +9368,7 @@ var _user$project$Cranson$httpErrorToMessage = function (error) {
 			return _elm_lang$core$Basics$toString(error);
 	}
 };
-var _user$project$Cranson$update = F2(
+var _gary_rafferty$cranson_ui$Cranson$update = F2(
 	function (msg, model) {
 		var _p1 = msg;
 		if (_p1.ctor === 'NewPlans') {
@@ -9387,7 +9387,7 @@ var _user$project$Cranson$update = F2(
 						model,
 						{
 							alertMessage: _elm_lang$core$Maybe$Just(
-								_user$project$Cranson$httpErrorToMessage(_p1._0._0))
+								_gary_rafferty$cranson_ui$Cranson$httpErrorToMessage(_p1._0._0))
 						}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
@@ -9402,26 +9402,26 @@ var _user$project$Cranson$update = F2(
 			};
 		}
 	});
-var _user$project$Cranson$baseUrl = 'http://api.cranson.co';
-var _user$project$Cranson$plansUrl = A2(_elm_lang$core$Basics_ops['++'], _user$project$Cranson$baseUrl, '/plans');
-var _user$project$Cranson$planUrl = function (plan) {
+var _gary_rafferty$cranson_ui$Cranson$baseUrl = 'http://api.cranson.co';
+var _gary_rafferty$cranson_ui$Cranson$plansUrl = A2(_elm_lang$core$Basics_ops['++'], _gary_rafferty$cranson_ui$Cranson$baseUrl, '/plans');
+var _gary_rafferty$cranson_ui$Cranson$planUrl = function (plan) {
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
-		_user$project$Cranson$baseUrl,
+		_gary_rafferty$cranson_ui$Cranson$baseUrl,
 		A2(
 			_elm_lang$core$Basics_ops['++'],
 			'/plan/',
 			_elm_lang$core$Basics$toString(plan.id)));
 };
-var _user$project$Cranson$Model = F3(
+var _gary_rafferty$cranson_ui$Cranson$Model = F3(
 	function (a, b, c) {
 		return {plans: a, viewState: b, alertMessage: c};
 	});
-var _user$project$Cranson$Plan = F8(
+var _gary_rafferty$cranson_ui$Cranson$Plan = F8(
 	function (a, b, c, d, e, f, g, h) {
 		return {id: a, address: b, description: c, reference: d, status: e, registrationDate: f, decisionDate: g, link: h};
 	});
-var _user$project$Cranson$planDecoder = A4(
+var _gary_rafferty$cranson_ui$Cranson$planDecoder = A4(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optional,
 	'link',
 	_elm_lang$core$Json_Decode$string,
@@ -9460,30 +9460,30 @@ var _user$project$Cranson$planDecoder = A4(
 								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 								'id',
 								_elm_lang$core$Json_Decode$int,
-								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Cranson$Plan)))))))));
-var _user$project$Cranson$ViewSingle = {ctor: 'ViewSingle'};
-var _user$project$Cranson$ViewAll = {ctor: 'ViewAll'};
-var _user$project$Cranson$initialModel = {
+								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_gary_rafferty$cranson_ui$Cranson$Plan)))))))));
+var _gary_rafferty$cranson_ui$Cranson$ViewSingle = {ctor: 'ViewSingle'};
+var _gary_rafferty$cranson_ui$Cranson$ViewAll = {ctor: 'ViewAll'};
+var _gary_rafferty$cranson_ui$Cranson$initialModel = {
 	plans: {ctor: '[]'},
-	viewState: _user$project$Cranson$ViewAll,
+	viewState: _gary_rafferty$cranson_ui$Cranson$ViewAll,
 	alertMessage: _elm_lang$core$Maybe$Nothing
 };
-var _user$project$Cranson$CloseAlert = {ctor: 'CloseAlert'};
-var _user$project$Cranson$NewPlans = function (a) {
+var _gary_rafferty$cranson_ui$Cranson$CloseAlert = {ctor: 'CloseAlert'};
+var _gary_rafferty$cranson_ui$Cranson$NewPlans = function (a) {
 	return {ctor: 'NewPlans', _0: a};
 };
-var _user$project$Cranson$getPlans = A2(
+var _gary_rafferty$cranson_ui$Cranson$getPlans = A2(
 	_elm_lang$http$Http$send,
-	_user$project$Cranson$NewPlans,
+	_gary_rafferty$cranson_ui$Cranson$NewPlans,
 	A2(
 		_elm_lang$http$Http$get,
-		_user$project$Cranson$plansUrl,
-		_elm_lang$core$Json_Decode$list(_user$project$Cranson$planDecoder)));
-var _user$project$Cranson$main = _elm_lang$html$Html$program(
+		_gary_rafferty$cranson_ui$Cranson$plansUrl,
+		_elm_lang$core$Json_Decode$list(_gary_rafferty$cranson_ui$Cranson$planDecoder)));
+var _gary_rafferty$cranson_ui$Cranson$main = _elm_lang$html$Html$program(
 	{
-		init: {ctor: '_Tuple2', _0: _user$project$Cranson$initialModel, _1: _user$project$Cranson$getPlans},
-		view: _user$project$Cranson$view,
-		update: _user$project$Cranson$update,
+		init: {ctor: '_Tuple2', _0: _gary_rafferty$cranson_ui$Cranson$initialModel, _1: _gary_rafferty$cranson_ui$Cranson$getPlans},
+		view: _gary_rafferty$cranson_ui$Cranson$view,
+		update: _gary_rafferty$cranson_ui$Cranson$update,
 		subscriptions: function (_p2) {
 			return _elm_lang$core$Platform_Sub$none;
 		}
@@ -9491,8 +9491,8 @@ var _user$project$Cranson$main = _elm_lang$html$Html$program(
 
 var Elm = {};
 Elm['Cranson'] = Elm['Cranson'] || {};
-if (typeof _user$project$Cranson$main !== 'undefined') {
-    _user$project$Cranson$main(Elm['Cranson'], 'Cranson', undefined);
+if (typeof _gary_rafferty$cranson_ui$Cranson$main !== 'undefined') {
+    _gary_rafferty$cranson_ui$Cranson$main(Elm['Cranson'], 'Cranson', undefined);
 }
 
 if (typeof define === "function" && define['amd'])
