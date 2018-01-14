@@ -13,6 +13,6 @@ Should allow users to
 #### Usage
 Use elm-live to automatically compile when changes are saved.
 ```bash
-elm-live Cranson.elm --open --output=cranson.js
+elm-live src/Cranson.elm --open --output=build/cranson.js
 ```
 
