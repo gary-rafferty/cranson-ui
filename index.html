@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cranson</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="cranson.css">
+    <script src="cranson.js"></script>
+  </head>
+  <body>
+    <div id="cranson-app" class='container-fluid'></div>
+    <script>
+      var node = document.getElementById('cranson-app');
+      var app = Elm.Cranson.embed(node);
+    </script>
+  </body>
+</html>
