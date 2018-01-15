@@ -27,7 +27,7 @@ type Status
     = Pending
     | Decided
     | OnAppeal
-    | Invalid
+    | InvalidOrWithdrawn
     | InProcess
     | Unknown
 
@@ -84,7 +84,7 @@ planStatus status =
             Decided
 
         "Invalid or Withdrawn" ->
-            Invalid
+            InvalidOrWithdrawn
 
         "On Appeal" ->
             OnAppeal
