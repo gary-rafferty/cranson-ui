@@ -187,6 +187,18 @@ viewPlansList plans =
 
 viewPlanItem : Plan -> Html msg
 viewPlanItem plan =
+    let
+        badgeKlass =
+            case plan.status of
+                InvalidOrWithdrawn ->
+                    "badge badge-danger"
+
+                Decided ->
+                    "badge badge-success"
+
+                _ ->
+                    "badge badge-primary"
+    in
     div [ class "col-3" ]
         [ div [ class "card mb-2 plan" ]
             [ div [ class "card-header" ]
@@ -201,7 +213,7 @@ viewPlanItem plan =
             , div [ class "card-footer" ]
                 [ div [ class "row" ]
                     [ div []
-                        [ span [ class "badge badge-secondary" ] [ text (toString plan.status) ] ]
+                        [ span [ class badgeKlass ] [ text (toString plan.status) ] ]
                     ]
                 ]
             ]
