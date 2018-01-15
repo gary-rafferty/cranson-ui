@@ -4,8 +4,8 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Http
-import Json.Decode exposing (Decoder, float, int, string, succeed)
-import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Decode exposing (Decoder, andThen, field, int, nullable, string, succeed)
+import Json.Decode.Extra exposing ((|:))
 
 
 -- MODEL
@@ -23,14 +23,23 @@ type ViewState
     | ViewSingle
 
 
+type Status
+    = Pending
+    | Decided
+    | OnAppeal
+    | Invalid
+    | InProcess
+    | Unknown
+
+
 type alias Plan =
     { id : Int
     , address : String
     , description : String
     , reference : String
-    , status : String
+    , status : Status
     , registrationDate : String
-    , decisionDate : String
+    , decisionDate : Maybe String
     , link : String
     }
 
@@ -49,15 +58,42 @@ initialModel =
 
 planDecoder : Decoder Plan
 planDecoder =
-    decode Plan
-        |> Json.Decode.Pipeline.required "id" int
-        |> optional "address" string "unknown address"
-        |> optional "description" string ""
-        |> optional "reference" string ""
-        |> optional "status" string ""
-        |> optional "registration_date" string ""
-        |> optional "decision_date" string ""
-        |> optional "link" string ""
+    succeed Plan
+        |: field "id" int
+        |: field "address" string
+        |: field "description" string
+        |: field "reference" string
+        |: field "status" (string |> andThen decodeStatus)
+        |: field "registration_date" string
+        |: field "decision_date" (nullable string)
+        |: field "link" string
+
+
+decodeStatus : String -> Decoder Status
+decodeStatus status =
+    succeed (planStatus status)
+
+
+planStatus : String -> Status
+planStatus status =
+    case status of
+        "Pending" ->
+            Pending
+
+        "Decided" ->
+            Decided
+
+        "Invalid or Withdrawn" ->
+            Invalid
+
+        "On Appeal" ->
+            OnAppeal
+
+        "Current status not assigned in APAS" ->
+            InProcess
+
+        _ ->
+            Unknown
 
 
 
@@ -165,7 +201,7 @@ viewPlanItem plan =
             , div [ class "card-footer" ]
                 [ div [ class "row" ]
                     [ div []
-                        [ span [ class "badge badge-secondary" ] [ text plan.status ] ]
+                        [ span [ class "badge badge-secondary" ] [ text (toString plan.status) ] ]
                     ]
                 ]
             ]
